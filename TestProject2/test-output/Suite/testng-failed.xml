@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.Infra.Listener"/>
+    <listener class-name="com.Infra.CustomListener"/>
+  </listeners>
+  <test thread-count="2" parallel="tests" name="SmokeTest1(failed)">
+    <classes>
+      <class name="com.TestExecute.BVT.SmokeTestDirectory1">
+        <methods>
+          <include name="test1"/>
+          <include name="after"/>
+          <include name="before"/>
+        </methods>
+      </class> <!-- com.TestExecute.BVT.SmokeTestDirectory1 -->
+    </classes>
+  </test> <!-- SmokeTest1(failed) -->
+</suite> <!-- Failed suite [Suite] -->
