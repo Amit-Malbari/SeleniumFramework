@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.TestComponent.BVT.BVTComponent;
 // added comment line1
 // added commet line2
+// added comment
 public class SmokeTestDirectory1 extends BVTComponent{
 	
 	String datafile="C:\\Users\\amalbari\\eclipse-workspace\\IntegragtedProject\\src\\com\\TestData\\BVT\\BVT1.xlsx";
