@@ -29,6 +29,7 @@ WebDriver driver;
 	public void entertext(WebDriver driver, String key, String value) throws InterruptedException 
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 40);
+		driver.findElement(By.xpath("//label[text()='"+key+"']/following-sibling::input")).clear();
 		driver.findElement(By.xpath("//label[text()='"+key+"']/following-sibling::input")).sendKeys(value);	
 	}
 	
