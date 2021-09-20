@@ -50,6 +50,7 @@ public class MainLauncher {
 			//prepareTestNGAndProperties();
 			//HA.TestAutomation.HATF_properties.createInstance(configFileName);
 			//check if users are active, we are not going to check for local environments 
+			System.out.println(testngFileName);
 			updatePropsFiles();
 			ITestNGListener listener = new TestListenerAdapter();
 			TestNG testng = new TestNG();
