@@ -111,6 +111,4 @@ public class MainLauncher {
 				testng.run();
 			}
 		}
-
-
 }

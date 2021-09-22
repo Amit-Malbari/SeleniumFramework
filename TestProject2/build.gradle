@@ -54,3 +54,28 @@ dependencies{
 	compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 	compile group: 'javax.mail', name: 'mail', version:'1.5.0-b01'
 }
+
+
+
+
+task unzip(dependsOn : 'assemble', type : Copy) {
+	def destDir = "${project.buildDir}\\libs";
+	from zipTree("${project.buildDir}\\distributions\\${project.name}.zip")
+	into destDir
+}
+
+def projectCp = "${project.name}.jar"
+task execute(dependsOn : 'unzip' ,type:JavaExec) {
+	def configLocation = project.hasProperty('configFile')? configFile:'hataf.properties';
+	def testngLocation = project.hasProperty('testngFile')? testngFile:'TestNG.xml';
+	def summaryFlag = project.hasProperty('summaryFlag') ? summaryFlag : 1;
+	def module = project.hasProperty('area')? area:'BVT';
+	def runUrl = project.hasProperty('url')? url:'https://nightly.planfuldev.com/';
+	main = 'com.TestExecute.launcher.MainLauncher'
+	args(["--config",configLocation ,"--testngXml" ,testngLocation, "--summaryFlag", summaryFlag, "--area", module, "--url", runUrl])
+	classpath = files(
+		"${project.buildDir}\\libs\\${projectCp}",
+		"${project.buildDir}\\libs\\${project.name}\\lib\\*",
+		project.sourceSets.main.output,
+	)
+}
