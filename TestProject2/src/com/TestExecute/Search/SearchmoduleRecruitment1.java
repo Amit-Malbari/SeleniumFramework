@@ -24,8 +24,9 @@ public class SearchmoduleRecruitment1 extends SearchComponent{
 	@Test
 	public void test1() throws InvalidFormatException, IOException, InterruptedException {
 		String[][] result=compSearch(datafile,driver);
-		Assert.assertEquals(result[0][0],result[0][1] );
 		System.out.println("Search Module 1 executed");
+		Assert.assertEquals(result[0][0],result[0][1] );
+		
 	}
 		
 	@AfterClass
