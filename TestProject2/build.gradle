@@ -18,7 +18,7 @@ application {
 	mainClassName = javaMainClass
 }
 group = 'amit'
-version = 3
+version = project.hasProperty('version')? version:4;
 sourceCompatibility=15
 targetCompatibility=15
 
