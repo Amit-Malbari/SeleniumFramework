@@ -144,7 +144,7 @@ def version=2
 publishing {
 	publications {
 	   maven(MavenPublication) {
-			artifact("$buildDir/libs/${project.name}.jar") {
+			artifact("$buildDir/libs/${project.name}-${version}.jar") {
 				artifactId = "orangeHRM${artifactSuffix}"
 				
 			}
@@ -186,11 +186,11 @@ task finalBuild(dependsOn:['jar','publish'] ) {
 // unzipping the zip conatining all the jar files, dependency jars
 task unzip(dependsOn : 'assemble', type : Copy) {
 	def destDir = "${project.buildDir}\\libs";
-	from zipTree("${project.buildDir}\\distributions\\${project.name}.zip")
+	from zipTree("${project.buildDir}\\distributions\\${project.name}-${version}.zip")
 	into destDir
 }
 
-def projectCp = "${project.name}.jar"
+def projectCp = "${project.name}-${version}.jar"
 task execute(dependsOn : 'unzip' ,type:JavaExec) {
 	def configLocation = project.hasProperty('configFile')? configFile:'hataf.properties';
 	def testngLocation = project.hasProperty('testngFile')? testngFile:'TestNG.xml';
@@ -201,7 +201,7 @@ task execute(dependsOn : 'unzip' ,type:JavaExec) {
 	args(["--config",configLocation ,"--testngXml" ,testngLocation, "--summaryFlag", summaryFlag, "--area", module, "--url", runUrl])
 	classpath = files(
 		"${project.buildDir}\\libs\\${projectCp}",
-		"${project.buildDir}\\libs\\${project.name}\\lib\\*",
+		"${project.buildDir}\\libs\\${project.name}-${version}\\lib\\*",
 		project.sourceSets.main.output,
 	)
 }
