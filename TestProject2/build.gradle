@@ -139,7 +139,7 @@ task copyTestData(dependsOn:['copyBVTTestData','copySearchTestData','copyWorkFlo
 
 def env = project.hasProperty('env')? env:'nightly';
 def artifactSuffix = (env.equals('nightly') ? '-night' : "-${env}");
-def version=2
+
 
 publishing {
 	publications {
